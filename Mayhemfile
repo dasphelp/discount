@@ -1,0 +1,7 @@
+project: rnshah9/mayhem-discount
+target: markdown
+tests: null
+
+cmds:
+  - cmd: /repo/markdown @@
+    filepath: /test.md
