@@ -2,5 +2,4 @@ project: discount
 target: markdown
 
 cmds:
-  - cmd: /repo/markdown /test.md
-    filepath: /test.md
+  - cmd: /install/bin/markdown @@
