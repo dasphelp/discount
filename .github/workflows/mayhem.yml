@@ -7,6 +7,8 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  MARKDOWN_MAYHEMFILE: markdown.mayhemfile
+  MKD2HTML_MAYHEMFILE: mkd2html.mayhemfile
 
 jobs:
   build:
@@ -49,12 +51,18 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-      - name: Start analysis
+      - name: Start analysis for markdown
         uses: ForAllSecure/mcode-action@v1
         with:
           mayhem-token: ${{ secrets.MAYHEM_TOKEN }}
-          args: --image ${{ steps.meta.outputs.tags }}
+          args: --image ${{ steps.meta.outputs.tags }} --file ${{ env.MARKDOWN_MAYHEMFILE }} --duration 600
           sarif-output: sarif
+      - name: Start analysis for mkd2html
+        uses: ForAllSecure/mcode-action@v1
+        with:
+          mayhem-token: ${{ secrets.MAYHEM_TOKEN }}
+          args: --image ${{ steps.meta.outputs.tags }} --file ${{ env.MKD2HTML_MAYHEMFILE }}
+          sarif-output: sarif          
 
       - name: Upload SARIF file(s)
         uses: github/codeql-action/upload-sarif@v1
