@@ -11,3 +11,4 @@ RUN make install
 
 FROM ubuntu:20.04 as package
 COPY --from=builder /install /install
+COPY --from=builder /repo/mkd2html
