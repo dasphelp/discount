@@ -2,4 +2,4 @@ project: discount
 target: mkd2html
 
 cmds:
-  - cmd: /install/bin/mkd2html @@
+  - cmd: /repo/mkd2html @@
