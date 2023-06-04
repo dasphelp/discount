@@ -55,13 +55,13 @@ jobs:
         uses: ForAllSecure/mcode-action@v1
         with:
           mayhem-token: ${{ secrets.MAYHEM_TOKEN }}
-          args: --image ${{ steps.meta.outputs.tags }} --file ${{ env.MARKDOWN_MAYHEMFILE }} --duration 600
+          args: --image ${{ steps.meta.outputs.tags }} --file ${{ env.MARKDOWN_MAYHEMFILE }}
           sarif-output: sarif
       - name: Start analysis for mkd2html
         uses: ForAllSecure/mcode-action@v1
         with:
           mayhem-token: ${{ secrets.MAYHEM_TOKEN }}
-          args: --image ${{ steps.meta.outputs.tags }} --file ${{ env.MKD2HTML_MAYHEMFILE }}
+          args: --image ${{ steps.meta.outputs.tags }} --file ${{ env.MKD2HTML_MAYHEMFILE }} --duration 600
           sarif-output: sarif          
 
       - name: Upload SARIF file(s)
